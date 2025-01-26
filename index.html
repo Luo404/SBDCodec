@@ -6,9 +6,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>SBDCodec demo page</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" media="screen" href="main.css"/> 
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css"/>
+  <script type="text/javascript" src="./download.js"></script>
+  <!-- <script type="text/javascript" src="./config_AB.js"></script> -->
+  <!-- <script type="text/javascript" src="./config_ABX.js"></script> -->
+  <script type="text/javascript" src="./main.js"></script>
+  
 </head>
 
+<body> <!-- onload="init();">-->
+<body> <!-- onload="init();">-->
 <div align="center">
   <h1>SBDCodec: Decoupling Speech and Background-sound in Codec To Allow Explicit Feature Selections for Downstream Audio Tasks.</h1>
 </div>
@@ -111,11 +118,28 @@
 	<p>(f) Init y<sub>22</sub> (clean speech). (g) Reconstructed y<sub>22</sub> by SBDCodec. (h) Decode with zs<sub>2</sub>+zb<sub>1</sub>. (i) SD with zs<sub>2</sub>. (j) BGSR with zs<sub>2</sub> and "A person whisting" prompt.</p>
 </div>
 
-
-
-<div align="center">
-	<img src="image/vector_compare_new.png" width="30%">
-	<p><strong>Figure 3.</strong> Visualization of speech, background-sound and the composite audio quantized representations.</p>
+<div class="btn-ab" align="center">
+  <table class="tg" align="center"><!--style="undefined;table-layout: fixed; width: 493px">-->
+    <colgroup>
+      <col style="width: 400px">
+      <col style="width: 400px">
+	  <col style="width: 400px">
+    </colgroup>
+    <tbody>	  
+	  <tr>
+		<td class="tg-ihkz"><img src="image/vector_compare_new.png" width="90%"></td>
+		<td class="tg-ihkz"><img src="image/Codec_results.png" width="90%"></td>
+		<td class="tg-ihkz"><img src="image/SD_results.png" width="90%"></td>
+      </tr>
+    </tbody>	
+	<tfoot>
+      <tr>
+        <th class="tg-c3ow"><strong>Figure 3.</strong> Visualization of speech, background-sound and the composite audio quantized representations.</th>
+		<th class="tg-c3ow"><strong>Table 1.</strong> Reconstruction quality evaluation of codecs based on Codec-SUPERB. Best results are highlighted in <strong>bold</strong>.</th>
+        <th class="tg-c3ow"><strong>Table 2.</strong> The DNSMOS scores of different methods on the DNS Challenge test set. Best scores are highlighted in <strong>bold</strong>.</th>
+      </tr>
+    </tfoot>
+  </table>
 </div>
 
 
@@ -143,7 +167,6 @@
       </tr>
     </thead>
     <tbody>
-
 	  
 	  <tr>
         <td class="tg-ihkz"><audio controls="" style="width:230px">
@@ -167,8 +190,7 @@
 		<td class="tg-ihkz"><audio controls="" style="width:230px">
             <source src="audio/BGSR/noreverb_fileid_33.wav"></audio></td>
 		<td class="tg-ihkz">A duck quacking</td>		
-      </tr>
-	  
+      </tr>	  
   
 	  <tr>
         <td class="tg-ihkz"><audio controls="" style="width:230px">
