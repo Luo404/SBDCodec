@@ -26,634 +26,198 @@
   <p><sup>1</sup>China Mobile Research Institute, China</p>
   <p><sup>2</sup>State Key Laboratory of Multimedia Information Processing, Peking University, China</p>
 </div>
-<!-- <div> -->
-		<!-- <a href="AB2.html"> to Section2 Test</a> -->
-		<!-- <a href="AB3.html"> to Section3 Test</a> -->
-<!-- </div> -->
 
+<div align="center">
+  <h2>Abstract</h2>
+</div>
+<div>
+  <p>Recently, unifying framework for processing various audio tasks has become a trend, while different audio tasks concern about the features of distinct audio components. Therefore, this paper propose a SBDCodec that decouples speech and background-sound tokens during input audio discretization, so that downstream audio tasks are enable to select efficient input tokens explicitly. To achieve completely decoupling, at the model level, we design parallel independent speech and background-sound vector quantization modules, and at the training level, the propose token swapping training method with several other decoupling techniques are utilized.</p>
+</div>
 
+<div align="center">
+	<img src="image/SBDCodec.png" width="80%">
+	<p><strong>Figure 1.</strong> The overview of the proposed SBDCodec and its adapted speech denoising and background sound replacing models.</p>
+</div>
+
+<div align="center">
+  <h2>Results</h2>
+</div>
 
 <div class="btn-ab" align="center">
-  <table class="tg" align="center" width: 700px><!--style="undefined;table-layout: fixed; width: 493px">-->
+  <table class="tg" align="center"><!--style="undefined;table-layout: fixed; width: 493px">-->
+    <colgroup>
+      <col style="width: 100px">
+      <col style="width: 100px">
+      <col style="width: 100px">
+      <col style="width: 100px">
+	  <col style="width: 100px">
+    </colgroup>
+    <tbody>	  
+	  <tr>
+		<td class="tg-ihkz"><audio controls="" style="width:230px">
+            	<source src="audio_demo/a1_Init_m_n4.wav"></audio></td>
+        <td class="tg-ihkz"><audio controls="" style="width:230px">
+            	<source src="audio_demo/a2_Codec_m_n4.wav"></audio></td>
+		<td class="tg-ihkz"><audio controls="" style="width:230px">
+            	<source src="audio_demo/a3_Exc_m_n4.wav"></audio></td>
+		<td class="tg-ihkz"><audio controls="" style="width:230px">
+				<source src="audio_demo/a4_SE_m_n4.wav"></audio></td>
+		<td class="tg-ihkz"><audio controls="" style="width:230px">
+				<source src="audio_demo/a5_BGE_m_n4_m_n4 A dog barks quickly.wav"></audio></td>
+      </tr>
+    </tbody>	
+	<tfoot>
+      <tr>
+        <th class="tg-c3ow">(a)</th>
+		<th class="tg-c3ow">(b)</th>
+        <th class="tg-c3ow">(c)</th>
+        <th class="tg-c3ow">(d)</th>
+		<th class="tg-c3ow">(e)</th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+<div class="btn-ab" align="center">
+  <table class="tg" align="center"><!--style="undefined;table-layout: fixed; width: 493px">-->
+    <colgroup>
+      <col style="width: 100px">
+      <col style="width: 100px">
+      <col style="width: 100px">
+      <col style="width: 100px">
+	  <col style="width: 100px">
+    </colgroup>
+    <tbody>	  
+	  <tr>
+		<td class="tg-ihkz"><audio controls="" style="width:230px">
+            	<source src="audio_demo/b1_Init_f_sad.wav"></audio></td>
+        <td class="tg-ihkz"><audio controls="" style="width:230px">
+            	<source src="audio_demo/b2_Codec_f_sad.wav"></audio></td>
+		<td class="tg-ihkz"><audio controls="" style="width:230px">
+            	<source src="audio_demo/b3_Exc_f_sad.wav"></audio></td>
+		<td class="tg-ihkz"><audio controls="" style="width:230px">
+				<source src="audio_demo/b4_SE_f_sad.wav"></audio></td>
+		<td class="tg-ihkz"><audio controls="" style="width:230px">
+				<source src="audio_demo/b5_BGE_f_sad_A person whisting.wav"></audio></td>
+      </tr>
+    </tbody>	
+	<tfoot>
+      <tr>
+        <th class="tg-c3ow">(f)</th>
+		<th class="tg-c3ow">(g)</th>
+        <th class="tg-c3ow">(h)</th>
+        <th class="tg-c3ow">(i)</th>
+		<th class="tg-c3ow">(j)</th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+<div align="center">
+	<img src="image/All_demo_plot_8newnew.png" width="80%">
+	<p><strong>Figure 2.</strong> Demos of speech processed by SBDCodec and the related downstream tasks.</p>
+	<p>(a) Init y<sub>11</sub>. (b) Reconstructed y<sub>11</sub> by SBDCodec. (c) Decode with zs<sub>1</sub>+zb<sub>2</sub>. (d) SD with zs<sub>1</sub> (e) BGSR with zs<sub>1</sub> and "A dog barks quickly" prompt.</p>
+	<p>(f) Init y<sub>22</sub> (clean speech). (g) Reconstructed y<sub>22</sub> by SBDCodec. (h) Decode with zs<sub>2</sub>+zb<sub>1</sub>. (i) SD with $zs_2$. (j) BGSR with zs<sub>2</sub> and "A person whisting" prompt.</p>
+</div>
+
+
+
+<div align="center">
+	<img src="image/vector_compare_new.png" width="30%">
+	<p><strong>Figure 3.</strong> Visualization of speech, background-sound and the composite audio quantized representations.</p>
+</div>
+
+
+<div align="center">
+  <h2>Extra Demos</h2>
+</div>
+
+<div class="btn-ab" align="center">
+  <table class="tg" align="center"><!--style="undefined;table-layout: fixed; width: 493px">-->
     <colgroup>
       <col style="width: 0px">
       <col style="width: 100px">
       <col style="width: 100px">
       <col style="width: 100px">
-      <col style="width: 100px">
 	  <col style="width: 200px">
-
     </colgroup>
+	
     <thead>
       <tr>
-        <th class="tg-c3ow"></th>
-	<th class="tg-c3ow">Init audio</th>
+		<th class="tg-c3ow">Init audio</th>
         <th class="tg-c3ow">SBDCodec</th>
         <th class="tg-c3ow">SD model</th>
-	<th class="tg-c3ow">BGSR model</th>
-	<th class="tg-c3ow">Text instruction</th>
+		<th class="tg-c3ow">BGSR model</th>
+		<th class="tg-c3ow">Text instruction</th>
       </tr>
     </thead>
     <tbody>
-	  
-	  <tr>
-        <td class="tg-pcvp">demo1</td>
-		<td class="tg-ihkz"><audio controls="">
-            	<source src="audio/Init/noreverb_fileid_1.wav"></audio></td>
-        	<td class="tg-ihkz"><audio controls="">
-            	<source src="audio/SBDCodec/noreverb_fileid_1.wav"></audio></td>
-		<td class="tg-ihkz"><audio controls="">
-            	<source src="audio/SD/noreverb_fileid_1.wav"></audio></td>
-		<td class="tg-ihkz"><audio controls="">
-		<source src="audio/BGSR/noreverb_fileid_1.wav"></audio></td>
-		<td class="tg-ihkz">Several birds chirp with some hissing</td>
-      </tr>
 
-	  <tr>
-        <td class="tg-pcvp">test2</td>
-        <td class="tg-ihkz"><audio controls="">
-            <source src="audio/BGSR/noreverb_fileid_5.wav"></audio></td>
-        <td class="tg-ihkz"><audio controls="">
-            <source src="audio/Init/noreverb_fileid_5.wav"></audio></td>
-		<td class="tg-ihkz"><audio controls="">
-            <source src="audio/Reference/noreverb_fileid_5.wav"></audio></td>
-		<td class="tg-ihkz">Rain is falling continuously</td>
-		<td class="tg-ihkz">雨下个不停</td>
-      </tr>
-	  <tr id="test2">
-        <td class="tg-pcvp"></td>
-        <td id="c20" class="tg-ihkz">
-		<label for="score20">原始语音保留质量:</label><input type="number" id="score20" name="score20" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>
-	  <tr id="test2">
-        <td class="tg-pcvp"></td>
-        <td id="c21" class="tg-ihkz">
-		<label for="score21">原始背景音剔除质量:</label><input type="number" id="score21" name="score21" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>
-	  <tr id="test2">
-        <td class="tg-pcvp"></td>
-        <td id="c22" class="tg-ihkz">
-		<label for="score22">生成背景音与文本提示相关性:</label><input type="number" id="score22" name="score22" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>
-	  
 	  
 	  <tr>
-        <td class="tg-pcvp">test3</td>
-        <td class="tg-ihkz"><audio controls="">
-            <source src="audio/BGSR/noreverb_fileid_9.wav"></audio></td>
-        <td class="tg-ihkz"><audio controls="">
-            <source src="audio/Init/noreverb_fileid_9.wav"></audio></td>
-		<td class="tg-ihkz"><audio controls="">
-            <source src="audio/Reference/noreverb_fileid_9.wav"></audio></td>
-		<td class="tg-ihkz">A dog barks quickly</td>
-		<td class="tg-ihkz">一条狗叫声急促</td>
-      </tr>
-	  <tr id="test3">
-        <td class="tg-pcvp"></td>
-        <td id="c30" class="tg-ihkz">
-		<label for="score30">原始语音保留质量:</label><input type="number" id="score30" name="score30" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>
-	  <tr id="test3">
-        <td class="tg-pcvp"></td>
-        <td id="c31" class="tg-ihkz">
-		<label for="score31">原始背景音剔除质量:</label><input type="number" id="score31" name="score31" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>
-	  <tr id="test3">
-        <td class="tg-pcvp"></td>
-        <td id="c32" class="tg-ihkz">
-		<label for="score32">生成背景音与文本提示相关性:</label><input type="number" id="score32" name="score32" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>
-	  
-	  <tr>
-        <td class="tg-pcvp">test4</td>
-        <td class="tg-ihkz"><audio controls="">
-            <source src="audio/BGSR/noreverb_fileid_13.wav"></audio></td>
-        <td class="tg-ihkz"><audio controls="">
+        <td class="tg-ihkz"><audio controls="" style="width:230px">
             <source src="audio/Init/noreverb_fileid_13.wav"></audio></td>
-		<td class="tg-ihkz"><audio controls="">
-            <source src="audio/Reference/noreverb_fileid_13.wav"></audio></td>
-		<td class="tg-ihkz">An engine revving and then tires squealing</td>
-		<td class="tg-ihkz">发动机轰轰作响，轮胎发出刺耳的声音</td>		
-      </tr>
-	  <tr id="test4">
-        <td class="tg-pcvp"></td>
-        <td id="c40" class="tg-ihkz">
-		<label for="score40">原始语音保留质量:</label><input type="number" id="score40" name="score40" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>
-	  <tr id="test4">
-        <td class="tg-pcvp"></td>
-        <td id="c41" class="tg-ihkz">
-		<label for="score41">原始背景音剔除质量:</label><input type="number" id="score41" name="score41" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>
-	  <tr id="test4">
-        <td class="tg-pcvp"></td>
-        <td id="c42" class="tg-ihkz">
-		<label for="score42">生成背景音与文本提示相关性:</label><input type="number" id="score42" name="score42" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
+        <td class="tg-ihkz"><audio controls="" style="width:230px">
+            <source src="audio/SBDCodec/noreverb_fileid_13.wav"></audio></td>
+		<td class="tg-ihkz"><audio controls="" style="width:230px">
+            <source src="audio/SD/noreverb_fileid_13.wav"></audio></td>
+		<td class="tg-ihkz"><audio controls="" style="width:230px">
+            <source src="audio/BGSR/noreverb_fileid_13.wav" style="width:230px"></audio></td>
+		<td class="tg-ihkz">An engine revving and then tires squealing</td>	
       </tr>
 	  
 	  <tr>
-        <td class="tg-pcvp">test5</td>
-        <td class="tg-ihkz"><audio controls="">
-            <source src="audio/BGSR/noreverb_fileid_33.wav"></audio></td>
-        <td class="tg-ihkz"><audio controls="">
+        <td class="tg-ihkz"><audio controls="" style="width:230px">
             <source src="audio/Init/noreverb_fileid_33.wav"></audio></td>
-		<td class="tg-ihkz"><audio controls="">
-            <source src="audio/Reference/noreverb_fileid_33.wav"></audio></td>
-		<td class="tg-ihkz">A duck quacking</td>
-		<td class="tg-ihkz">一只鸭子嘎嘎叫</td>			
-      </tr>
-	  <tr id="test5">
-        <td class="tg-pcvp"></td>
-        <td id="c50" class="tg-ihkz">
-		<label for="score50">原始语音保留质量:</label><input type="number" id="score50" name="score50" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>
-	  <tr id="test5">
-        <td class="tg-pcvp"></td>
-        <td id="c51" class="tg-ihkz">
-		<label for="score51">原始背景音剔除质量:</label><input type="number" id="score51" name="score51" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>
-	  <tr id="test5">
-        <td class="tg-pcvp"></td>
-        <td id="c52" class="tg-ihkz">
-		<label for="score52">生成背景音与文本提示相关性:</label><input type="number" id="score52" name="score52" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
+        <td class="tg-ihkz"><audio controls="" style="width:230px">
+            <source src="audio/SBDCodec/noreverb_fileid_33.wav"></audio></td>
+		<td class="tg-ihkz"><audio controls="" style="width:230px">
+            <source src="audio/SD/noreverb_fileid_33.wav"></audio></td>
+		<td class="tg-ihkz"><audio controls="" style="width:230px">
+            <source src="audio/BGSR/noreverb_fileid_33.wav"></audio></td>
+		<td class="tg-ihkz">A duck quacking</td>		
       </tr>
 	  
-	  <tr>
-        <td class="tg-pcvp">test6</td>
-        <td class="tg-ihkz"><audio controls="">
-            <source src="audio/BGSR/noreverb_fileid_36.wav"></audio></td>
-        <td class="tg-ihkz"><audio controls="">
-            <source src="audio/Init/noreverb_fileid_36.wav"></audio></td>
-		<td class="tg-ihkz"><audio controls="">
-            <source src="audio/Reference/noreverb_fileid_36.wav"></audio></td>
-		<td class="tg-ihkz">Rubbing and scraping a rough surface</td>
-		<td class="tg-ihkz">摩擦和刮擦粗糙的表面</td>	
-      </tr>
-	  <tr id="test6">
-        <td class="tg-pcvp"></td>
-        <td id="c60" class="tg-ihkz">
-		<label for="score60">原始语音保留质量:</label><input type="number" id="score60" name="score60" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>
-	  <tr id="test6">
-        <td class="tg-pcvp"></td>
-        <td id="c61" class="tg-ihkz">
-		<label for="score61">原始背景音剔除质量:</label><input type="number" id="score61" name="score61" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>
-	  <tr id="test6">
-        <td class="tg-pcvp"></td>
-        <td id="c62" class="tg-ihkz">
-		<label for="score62">生成背景音与文本提示相关性:</label><input type="number" id="score62" name="score62" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>
-	  
-	  <tr>
-        <td class="tg-pcvp">test7</td>
-        <td class="tg-ihkz"><audio controls="">
-            <source src="audio/BGSR/noreverb_fileid_39.wav"></audio></td>
-        <td class="tg-ihkz"><audio controls="">
-            <source src="audio/Init/noreverb_fileid_39.wav"></audio></td>
-		<td class="tg-ihkz"><audio controls="">
-            <source src="audio/Reference/noreverb_fileid_39.wav"></audio></td>
-		<td class="tg-ihkz">A loud and forceful bang</td>
-		<td class="tg-ihkz">一声巨大而有力的邦声</td>
-      </tr>
-	  <tr id="test7">
-        <td class="tg-pcvp"></td>
-        <td id="c70" class="tg-ihkz">
-		<label for="score70">原始语音保留质量:</label><input type="number" id="score70" name="score70" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-      </tr>
-	  <tr id="test7">
-        <td class="tg-pcvp"></td>
-        <td id="c71" class="tg-ihkz">
-		<label for="score71">原始背景音剔除质量:</label><input type="number" id="score71" name="score71" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>
-	  <tr id="test7">
-        <td class="tg-pcvp"></td>
-        <td id="c72" class="tg-ihkz">
-		<label for="score72">生成背景音与文本提示相关性:</label><input type="number" id="score72" name="score72" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>
-	  
-	  <tr>
-        <td class="tg-pcvp">test8</td>
-         <td class="tg-ihkz"><audio controls="">
-            <source src="audio/BGSR/noreverb_fileid_42.wav"></audio></td>
-        <td class="tg-ihkz"><audio controls="">
-            <source src="audio/Init/noreverb_fileid_42.wav"></audio></td>
-		<td class="tg-ihkz"><audio controls="">
-            <source src="audio/Reference/noreverb_fileid_42.wav"></audio></td>
-		<td class="tg-ihkz">A paper is being crumpled</td>
-		<td class="tg-ihkz">一张纸被揉成一团</td>
-      </tr>
-	  <tr id="test8">
-        <td class="tg-pcvp"></td>
-        <td id="c80" class="tg-ihkz">
-		<label for="score80">原始语音保留质量:</label><input type="number" id="score80" name="score80" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>
-	  <tr id="test8">
-        <td class="tg-pcvp"></td>
-        <td id="c81" class="tg-ihkz">
-		<label for="score81">原始背景音剔除质量:</label><input type="number" id="score81" name="score81" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>
-	  <tr id="test8">
-        <td class="tg-pcvp"></td>
-        <td id="c82" class="tg-ihkz">
-		<label for="score82">生成背景音与文本提示相关性:</label><input type="number" id="score82" name="score82" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>
-	  
-	  <tr>
-        <td class="tg-pcvp">test9</td>
-        <td class="tg-ihkz"><audio controls="">
-            <source src="audio/BGSR/noreverb_fileid_14.wav"></audio></td>
-        <td class="tg-ihkz"><audio controls="">
-            <source src="audio/Init/noreverb_fileid_14.wav"></audio></td>
-		<td class="tg-ihkz"><audio controls="">
-            <source src="audio/Reference/noreverb_fileid_14.wav"></audio></td>
-		<td class="tg-ihkz">An engine hums as it idles</td>
-		<td class="tg-ihkz">发动机空转时发出嗡嗡声</td>
-      </tr>
-	  <tr id="test9">
-        <td class="tg-pcvp"></td>
-        <td id="c90" class="tg-ihkz">
-		<label for="score90">原始语音保留质量:</label><input type="number" id="score90" name="score90" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>
-	  <tr id="test9">
-        <td class="tg-pcvp"></td>
-        <td id="c91" class="tg-ihkz">
-		<label for="score91">原始背景音剔除质量:</label><input type="number" id="score91" name="score91" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>
-	  <tr id="test9">
-        <td class="tg-pcvp"></td>
-        <td id="c92" class="tg-ihkz">
-		<label for="score92">生成背景音与文本提示相关性:</label><input type="number" id="score92" name="score92" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>
-	  
-	  <tr>
-        <td class="tg-pcvp">test10</td>
-        <td class="tg-ihkz"><audio controls="">
-            <source src="audio/BGSR/noreverb_fileid_54.wav"></audio></td>
-        <td class="tg-ihkz"><audio controls="">
-            <source src="audio/Init/noreverb_fileid_54.wav"></audio></td>
-		<td class="tg-ihkz"><audio controls="">
-            <source src="audio/Reference/noreverb_fileid_54.wav"></audio></td>
-		<td class="tg-ihkz">Typing on a computer keyboard</td>
-		<td class="tg-ihkz">在电脑键盘上打字</td>
-      </tr>
-	  <tr id="test10">
-        <td class="tg-pcvp"></td>
-        <td id="c100" class="tg-ihkz">
-		<label for="score100">原始语音保留质量:</label><input type="number" id="score100" name="score100" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>
-	  <tr id="test10">
-        <td class="tg-pcvp"></td>
-        <td id="c101" class="tg-ihkz">
-		<label for="score101">原始背景音剔除质量:</label><input type="number" id="score101" name="score101" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>
-	  <tr id="test10">
-        <td class="tg-pcvp"></td>
-        <td id="c102" class="tg-ihkz">
-		<label for="score102">生成背景音与文本提示相关性:</label><input type="number" id="score102" name="score102" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>
-	  
-	  
-	  <tr>
-        <td class="tg-pcvp">test11</td>
-        <td class="tg-ihkz"><audio controls="">
-            <source src="audio/BGSR/noreverb_fileid_55.wav"></audio></td>
-        <td class="tg-ihkz"><audio controls="">
-            <source src="audio/Init/noreverb_fileid_55.wav"></audio></td>
-		<td class="tg-ihkz"><audio controls="">
-            <source src="audio/Reference/noreverb_fileid_55.wav"></audio></td>
-		<td class="tg-ihkz">Small dogs yip and whimper</td>
-		<td class="tg-ihkz">小狗汪汪地叫着，发出呜咽声</td>
-      </tr>
-	  <tr id="test11">
-        <td class="tg-pcvp"></td>
-        <td id="c110" class="tg-ihkz">
-		<label for="score110">原始语音保留质量:</label><input type="number" id="score110" name="score110" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>
-	  <tr id="test11">
-        <td class="tg-pcvp"></td>
-        <td id="c111" class="tg-ihkz">
-		<label for="score111">原始背景音剔除质量:</label><input type="number" id="score111" name="score111" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>
-	  <tr id="test11">
-        <td class="tg-pcvp"></td>
-        <td id="c112" class="tg-ihkz">
-		<label for="score112">生成背景音与文本提示相关性:</label><input type="number" id="score112" name="score112" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>
-      
-	  <tr>
-        <td class="tg-pcvp">test12</td>
-        <td class="tg-ihkz"><audio controls="">
-            <source src="audio/BGSR/noreverb_fileid_59.wav"></audio></td>
-        <td class="tg-ihkz"><audio controls="">
-            <source src="audio/Init/noreverb_fileid_59.wav"></audio></td>
-		<td class="tg-ihkz"><audio controls="">
-            <source src="audio/Reference/noreverb_fileid_59.wav"></audio></td>
-		<td class="tg-ihkz">A crowd applauds for a while</td>
-		<td class="tg-ihkz">人群中响起一阵掌声</td>
-      </tr>
-	  <tr id="test12">
-        <td class="tg-pcvp"></td>
-        <td id="c120" class="tg-ihkz">
-		<label for="score120">原始语音保留质量:</label><input type="number" id="score120" name="score120" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>
-	  <tr id="test12">
-        <td class="tg-pcvp"></td>
-        <td id="c121" class="tg-ihkz">
-		<label for="score121">原始背景音剔除质量:</label><input type="number" id="score121" name="score121" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>
-	  <tr id="test12">
-        <td class="tg-pcvp"></td>
-        <td id="c122" class="tg-ihkz">
-		<label for="score122">生成背景音与文本提示相关性:</label><input type="number" id="score122" name="score122" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>
-	  
-	  <tr>
-        <td class="tg-pcvp">test13</td>
-        <td class="tg-ihkz"><audio controls="">
-            <source src="audio/BGSR/noreverb_fileid_74.wav"></audio></td>
-        <td class="tg-ihkz"><audio controls="">
-            <source src="audio/Init/noreverb_fileid_74.wav"></audio></td>
-		<td class="tg-ihkz"><audio controls="">
-            <source src="audio/Reference/noreverb_fileid_74.wav"></audio></td>
-		<td class="tg-ihkz">A helicopter flying and wind</td>
-		<td class="tg-ihkz">直升机在风中飞行</td>
-      </tr>
-	  <tr id="test13">
-        <td class="tg-pcvp"></td>
-        <td id="c130" class="tg-ihkz">
-		<label for="score130">原始语音保留质量:</label><input type="number" id="score130" name="score130" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>
-	  <tr id="test13">
-        <td class="tg-pcvp"></td>
-        <td id="c131" class="tg-ihkz">
-		<label for="score131">原始背景音剔除质量:</label><input type="number" id="score131" name="score131" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>
-	  <tr id="test13">
-        <td class="tg-pcvp"></td>
-        <td id="c132" class="tg-ihkz">
-		<label for="score132">生成背景音与文本提示相关性:</label><input type="number" id="score132" name="score132" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>
-	  
-	  <tr>
-        <td class="tg-pcvp">test14</td>
-        <td class="tg-ihkz"><audio controls="">
-            <source src="audio/BGSR/noreverb_fileid_78.wav"></audio></td>
-        <td class="tg-ihkz"><audio controls="">
-            <source src="audio/Init/noreverb_fileid_78.wav"></audio></td>
-		<td class="tg-ihkz"><audio controls="">
-            <source src="audio/Reference/noreverb_fileid_78.wav"></audio></td>
-		<td class="tg-ihkz">Waves roll slowly and water swirls as the wind blows</td>
-		<td class="tg-ihkz">海浪缓缓翻滚，水流在风的吹拂下打着漩涡</td>
-      </tr>
-	  <tr id="test14">
-        <td class="tg-pcvp"></td>
-        <td id="c140" class="tg-ihkz">
-		<label for="score140">原始语音保留质量:</label><input type="number" id="score140" name="score140" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-              </tr>
-	  <tr id="test14">
-        <td class="tg-pcvp"></td>
-        <td id="c141" class="tg-ihkz">
-		<label for="score141">原始背景音剔除质量:</label><input type="number" id="score141" name="score141" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>
-	  <tr id="test14">
-        <td class="tg-pcvp"></td>
-        <td id="c142" class="tg-ihkz">
-		<label for="score142">生成背景音与文本提示相关性:</label><input type="number" id="score142" name="score142" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>
-	  
-	  <tr>
-        <td class="tg-pcvp">test15</td>
-        <td class="tg-ihkz"><audio controls="">
-            <source src="audio/BGSR/noreverb_fileid_98.wav"></audio></td>
-        <td class="tg-ihkz"><audio controls="">
-            <source src="audio/Init/noreverb_fileid_98.wav"></audio></td>
-		<td class="tg-ihkz"><audio controls="">
-            <source src="audio/Reference/noreverb_fileid_98.wav"></audio></td>
-			<td class="tg-ihkz">Typing on a typewriter</td>
-		<td class="tg-ihkz">在打字机上打字</td>
-      </tr>
-	  <tr id="test15">
-        <td class="tg-pcvp"></td>
-        <td id="c150" class="tg-ihkz">
-		<label for="score150">原始语音保留质量:</label><input type="number" id="score150" name="score150" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>	  
-	  <tr id="test15">
-        <td class="tg-pcvp"></td>
-        <td id="c151" class="tg-ihkz">
-		<label for="score151">原始背景音剔除质量:</label><input type="number" id="score151" name="score151" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>	 
-	  <tr id="test15">
-        <td class="tg-pcvp"></td>
-        <td id="c152" class="tg-ihkz">
-		<label for="score152">生成背景音与文本提示相关性:</label><input type="number" id="score152" name="score152" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>	 
-	  
-	  <tr>
-        <td class="tg-pcvp">test16</td>
-        <td class="tg-ihkz"><audio controls="">
-            <source src="audio/BGSR/noreverb_fileid_100.wav"></audio></td>
-        <td class="tg-ihkz"><audio controls="">
-            <source src="audio/Init/noreverb_fileid_100.wav"></audio></td>
-		<td class="tg-ihkz"><audio controls="">
-            <source src="audio/Reference/noreverb_fileid_100.wav"></audio></td>
-			<td class="tg-ihkz">Frying food is sizzling</td>
-		<td class="tg-ihkz">煎炸食物时发出咝咝声</td>
-      </tr>
-	  <tr id="test16">
-        <td class="tg-pcvp"></td>
-        <td id="c160" class="tg-ihkz">
-		<label for="score160">原始语音保留质量:</label><input type="number" id="score160" name="score160" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>	
-	  <tr id="test16">
-        <td class="tg-pcvp"></td>
-        <td id="c161" class="tg-ihkz">
-		<label for="score161">原始背景音剔除质量:</label><input type="number" id="score161" name="score161" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>	
-	  <tr id="test16">
-        <td class="tg-pcvp"></td>
-		<td id="c162" class="tg-ihkz">
-		<label for="score162">生成背景音与文本提示相关性:</label><input type="number" id="score162" name="score162" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>	
-	  
-	  <tr>
-        <td class="tg-pcvp">test17</td>
-        <td class="tg-ihkz"><audio controls="">
-            <source src="audio/BGSR/noreverb_fileid_103.wav"></audio></td>
-        <td class="tg-ihkz"><audio controls="">
-            <source src="audio/Init/noreverb_fileid_103.wav"></audio></td>
-		<td class="tg-ihkz"><audio controls="">
-            <source src="audio/Reference/noreverb_fileid_103.wav"></audio></td>
-			<td class="tg-ihkz">A clock ticking</td>
-		<td class="tg-ihkz">时钟滴答作响</td>
-      </tr>
-	  <tr id="test17">
-        <td class="tg-pcvp"></td>
-        <td id="c170" class="tg-ihkz">
-		<label for="score170">原始语音保留质量:</label><input type="number" id="score170" name="score170" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>	
-	  <tr id="test17">
-        <td class="tg-pcvp"></td>
-        <td id="c171" class="tg-ihkz">
-		<label for="score171">原始背景音剔除质量:</label><input type="number" id="score171" name="score171" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>	
-	  <tr id="test17">
-        <td class="tg-pcvp"></td>
-        <td id="c172" class="tg-ihkz">
-		<label for="score172">生成背景音与文本提示相关性:</label><input type="number" id="score172" name="score172" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>	
-	  
-	  <tr>
-        <td class="tg-pcvp">test18</td>
-        <td class="tg-ihkz"><audio controls="">
-            <source src="audio/BGSR/noreverb_fileid_110.wav"></audio></td>
-        <td class="tg-ihkz"><audio controls="">
-            <source src="audio/Init/noreverb_fileid_110.wav"></audio></td>
-		<td class="tg-ihkz"><audio controls="">
-            <source src="audio/Reference/noreverb_fileid_110.wav"></audio></td>
-			<td class="tg-ihkz">Rain and light thunder</td>
-		<td class="tg-ihkz">雨和轻微的雷声</td>
-      </tr>
-	  <tr id="test18">
-        <td class="tg-pcvp"></td>
-        <td id="c180" class="tg-ihkz">
-		<label for="score180">原始语音保留质量:</label><input type="number" id="score180" name="score180" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>	
-	  <tr id="test18">
-        <td class="tg-pcvp"></td>
-        <td id="c181" class="tg-ihkz">
-		<label for="score181">原始背景音剔除质量:</label><input type="number" id="score181" name="score181" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>	
-	  <tr id="test18">
-        <td class="tg-pcvp"></td>
-        <td id="c182" class="tg-ihkz">
-		<label for="score182">生成背景音与文本提示相关性:</label><input type="number" id="score182" name="score182" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>	
-	  
-	  <tr>
-        <td class="tg-pcvp">test19</td>
-        <td class="tg-ihkz"><audio controls="">
-            <source src="audio/BGSR/noreverb_fileid_147.wav"></audio></td>
-        <td class="tg-ihkz"><audio controls="">
-            <source src="audio/Init/noreverb_fileid_147.wav"></audio></td>
-		<td class="tg-ihkz"><audio controls="">
-            <source src="audio/Reference/noreverb_fileid_147.wav"></audio></td>
-			<td class="tg-ihkz">Whistling to music</td>
-		<td class="tg-ihkz">口哨吹着音乐</td>
-      </tr>
-	  <tr id="test19">
-        <td class="tg-pcvp"></td>
-        <td id="c190" class="tg-ihkz">
-		<label for="score190">原始语音保留质量:</label><input type="number" id="score190" name="score190" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>	
-	  <tr id="test19">
-        <td class="tg-pcvp"></td>
-        <td id="c191" class="tg-ihkz">
-		<label for="score191">原始背景音剔除质量:</label><input type="number" id="score191" name="score191" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>	
-	  <tr id="test19">
-        <td class="tg-pcvp"></td>
-        <td id="c192" class="tg-ihkz">
-		<label for="score192">生成背景音与文本提示相关性:</label><input type="number" id="score192" name="score192" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>	
-	  
-	  <tr>
-        <td class="tg-pcvp">test20</td>
-        <td class="tg-ihkz"><audio controls="">
-            <source src="audio/BGSR/noreverb_fileid_149.wav"></audio></td>
-        <td class="tg-ihkz"><audio controls="">
-            <source src="audio/Init/noreverb_fileid_149.wav"></audio></td>
-		<td class="tg-ihkz"><audio controls="">
-            <source src="audio/Reference/noreverb_fileid_149.wav"></audio></td>
-			<td class="tg-ihkz">Race cars are passing by</td>
-		<td class="tg-ihkz">赛车驶过</td>
-      </tr>
-	  <tr id="test20">
-        <td class="tg-pcvp"></td>
-        <td id="c200" class="tg-ihkz">
-		<label for="score200">原始语音保留质量:</label><input type="number" id="score200" name="score200" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>	
-	  <tr id="test20">
-        <td class="tg-pcvp"></td>
-        <td id="c201" class="tg-ihkz">
-		<label for="score201">原始背景音剔除质量:</label><input type="number" id="score201" name="score201" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>
-	  <tr id="test20">
-        <td class="tg-pcvp"></td>
-        <td id="c202" class="tg-ihkz">
-		<label for="score202">生成背景音与文本提示相关性:</label><input type="number" id="score202" name="score202" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>
   
-
 	  <tr>
-	  </tr>
+        <td class="tg-ihkz"><audio controls="" style="width:230px">
+            <source src="audio/Init/noreverb_fileid_98.wav"></audio></td>
+        <td class="tg-ihkz"><audio controls="" style="width:230px">
+            <source src="audio/SBDCodec/noreverb_fileid_98.wav"></audio></td>
+		<td class="tg-ihkz"><audio controls="" style="width:230px">
+            <source src="audio/SD/noreverb_fileid_98.wav"></audio></td>
+		<td class="tg-ihkz"><audio controls="" style="width:230px">
+            <source src="audio/BGSR/noreverb_fileid_98.wav"></audio></td>
+		<td class="tg-ihkz">Typing on a typewriter</td>
+      </tr>
+	  
+	  <tr>
+        <td class="tg-ihkz"><audio controls="" style="width:230px">
+            <source src="audio/Init/noreverb_fileid_55.wav"></audio></td>
+        <td class="tg-ihkz"><audio controls="" style="width:230px">
+            <source src="audio/SBDCodec/noreverb_fileid_55.wav"></audio></td>
+		<td class="tg-ihkz"><audio controls="" style="width:230px">
+            <source src="audio/SD/noreverb_fileid_55.wav"></audio></td>
+		<td class="tg-ihkz"><audio controls="" style="width:230px">
+            <source src="audio/BGSR/noreverb_fileid_55.wav"></audio></td>
+		<td class="tg-ihkz">Small dogs yip and whimper</td>
+      </tr>
+
+	  
+	  <tr>
+        <td class="tg-ihkz"><audio controls="" style="width:230px">
+            <source src="audio/Init/noreverb_fileid_110.wav"></audio></td>
+        <td class="tg-ihkz"><audio controls="" style="width:230px">
+            <source src="audio/SBDCodec/noreverb_fileid_110.wav"></audio></td>
+		<td class="tg-ihkz"><audio controls="" style="width:230px">
+            <source src="audio/SD/noreverb_fileid_110.wav"></audio></td>
+		<td class="tg-ihkz"><audio controls="" style="width:230px">
+            <source src="audio/BGSR/noreverb_fileid_110.wav"></audio></td>
+		<td class="tg-ihkz">Rain and light thunder</td>
+      </tr>
+
     </tbody>
   </table>
 </div>
 
-<div ></div>
-<div class="btn-end">
-  <button id="submit" onclick="nextButton()">提交</button>
-</div>
-<div>
-	<img src="image/logo.png">
-</div>
 
 
 </body>
