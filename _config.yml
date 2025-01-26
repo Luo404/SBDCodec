@@ -1,3 +1,5 @@
 remote_theme: pages-themes/tactile@v0.2.0
 plugins:
 - jekyll-remote-theme # add this line to the plugins list if you already have one
+title: [SBDCodec: Decoupling Speech and Background-sound in Codec To Allow Explicit Feature Selections for Downstream Audio Tasks.]
+description: [A short description of your site's purpose]
