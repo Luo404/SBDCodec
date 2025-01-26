@@ -15,16 +15,10 @@
 </head>
 
 <body> <!-- onload="init();">-->
-<div>
-  <h1>BGSR主观测听实验</h1>
+<div align="center">
+  <h1>SBDCodec: Decoupling Speech and Background-sound in Codec To Allow Explicit Feature Selections for Downstream Audio Tasks.</h1>
   <p id="question" class="question"></p>
 </div>
-<!-- <div> -->
-		<!-- <a href="AB2.html"> to Section2 Test</a> -->
-		<!-- <a href="AB3.html"> to Section3 Test</a> -->
-<!-- </div> -->
-
-
 
 <div class="btn-ab" align="center">
   <table class="tg" align="center"><!--style="undefined;table-layout: fixed; width: 493px">-->
@@ -33,50 +27,33 @@
       <col style="width: 100px">
       <col style="width: 100px">
       <col style="width: 100px">
-      <col style="width: 200px">
+      <col style="width: 100px">
 	  <col style="width: 200px">
 
     </colgroup>
     <thead>
       <tr>
         <th class="tg-c3ow"></th>
-        <th class="tg-c3ow">待评测BGSR</th>
-        <th class="tg-c3ow">原始音频</th>
-		<th class="tg-c3ow">参考背景音</th>
-		<th class="tg-c3ow">输入文本提示</th>
-		<th class="tg-c3ow">参考翻译</th>
+	<th class="tg-c3ow">Init audio</th>
+        <th class="tg-c3ow">SBDCodec</th>
+        <th class="tg-c3ow">SD model</th>
+	<th class="tg-c3ow">BGSR model</th>
+	<th class="tg-c3ow">Text instruction</th>
       </tr>
     </thead>
     <tbody>
 	  
 	  <tr>
-        <td class="tg-pcvp">test1</td>
+        <td class="tg-pcvp">demo1</td>
 		<td class="tg-ihkz"><audio controls="">
-            <source src="audio/BGSR/noreverb_fileid_1.wav"></audio></td>
-        <td class="tg-ihkz"><audio controls="">
-            <source src="audio/Init/noreverb_fileid_1.wav"></audio></td>
+            	<source src="audio/Init/noreverb_fileid_1.wav"></audio></td>
+        	<td class="tg-ihkz"><audio controls="">
+            	<source src="audio/SBDCodec/noreverb_fileid_1.wav"></audio></td>
 		<td class="tg-ihkz"><audio controls="">
-            <source src="audio/Reference/noreverb_fileid_1.wav"></audio></td>
+            	<source src="audio/SD/noreverb_fileid_1.wav"></audio></td>
+		<td class="tg-ihkz"><audio controls="">
+		<source src="audio/BGSR/noreverb_fileid_1.wav"></audio></td>
 		<td class="tg-ihkz">Several birds chirp with some hissing</td>
-		<td class="tg-ihkz">几只鸟儿发出叽叽喳喳的鸣叫声</td>
-      </tr>
-	  <tr id="test1">
-        <td class="tg-pcvp"></td>
-        <td id="c10" class="tg-ihkz">
-		<label for="score10">原始语音保留质量:</label><input type="number" id="score10" name="score10" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>
-	  <tr id="test1">
-        <td class="tg-pcvp"></td>
-        <td id="c11" class="tg-ihkz">
-		<label for="score11">原始背景音剔除质量:</label><input type="number" id="score11" name="score11" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
-      </tr>
-	  <tr id="test1">
-        <td class="tg-pcvp"></td>
-        <td id="c12" class="tg-ihkz">
-		<label for="score12">生成背景音与文本提示相关性:</label><input type="number" id="score12" name="score12" required min="0" max="5" step="any" oninput="if(value<0)value=0;if(value>5)value=5"/>
-		</td>
       </tr>
 
 	  <tr>
